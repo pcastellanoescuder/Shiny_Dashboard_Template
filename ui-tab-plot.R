@@ -4,8 +4,15 @@ fluidRow(column(width = 3,
                 
                 radioButtons("type_plot", "Choose an example plot:",
                              choices = c("PCA" = 'pca',
-                                         "MDS" = 'mds'),
-                             selected = 'pca')
+                                         "Density Plot" = 'density'),
+                             selected = 'pca'),
+                
+                conditionalPanel(condition = ("input.type_plot == 'density'"),
+                                 
+                                 selectInput("variate",label="Variate", choices = NULL),
+                                 sliderInput("slider1", label = "Bandwith Adjustment",
+                                             min = 0.5, max = 4, value = 1)
+                                 )
 
   )),
   
@@ -19,11 +26,11 @@ fluidRow(column(width = 3,
          tabPanel("Score Plot", plotlyOutput("score"))
          ))),
          
-         conditionalPanel(condition = ("input.type_plot == 'mds'"),
+         conditionalPanel(condition = ("input.type_plot == 'density'"),
                           
          fluidPage(tabsetPanel(
            
-         tabPanel("Distance Plot", plotlyOutput("distance"))
+         tabPanel("Density Plot", plotlyOutput("dens_plot"))
            
          )))
   

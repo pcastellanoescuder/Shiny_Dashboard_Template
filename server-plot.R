@@ -1,5 +1,21 @@
+Selection <- 
+  
+  reactive({
+    
+    if (input$type_plot == "density"){
+      
+      data <- datasetInput()
+      colnames(data)[1] <- "ID"
+      
+      x <- colnames(data)
+      updateSelectInput(session,"variate", choices = x[2:length(x)], selected = x[2])
+      print(data)
+    }
+  })
 
-Plot <- 
+
+Plot <-
+  
   reactive({
     
     data <- datasetInput()
@@ -24,10 +40,27 @@ Plot <-
                return(results)
                
              }
-                    
-             #else if (input$type_plot == "mds"){}
-  })
+  
+            if (input$type_plot == "density"){
 
+               data <- Selection()
+               
+               Variate <- as.character(input$variate)
+              
+               to_plot <- as.data.frame(data[,colnames(data) == Variate])
+               colnames(to_plot) <- "Variate"
+               
+               Density_Plot <- ggplotly(ggplot(to_plot, aes(x = Variate)) + 
+                                          geom_density(adjust=input$slider1) +
+                                          theme(legend.position="none") + 
+                                          theme_minimal())
+
+               
+               results <- list(Density_Plot = Density_Plot)
+               return(results)
+
+            }
+  })
 
 
 ###########
@@ -38,5 +71,9 @@ output$scree <- renderPlotly({
 
 output$score <- renderPlotly({
   Plot()$scoresplot
+})
+
+output$dens_plot <- renderPlotly({
+  Plot()$Density_Plot
 })
 

@@ -4,7 +4,8 @@ datasetInput <- reactive({
   infile <- input$data
 
   if (is.null(infile)){
-      return(NULL)
+    data <- read_csv("example_data/iris.csv")
+    return(data)
   } else {
     data <- read_csv(infile$datapath)
     return(data)
