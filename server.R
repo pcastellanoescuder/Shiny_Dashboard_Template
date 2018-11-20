@@ -11,8 +11,7 @@ shinyServer(function(input, output,session) {
   ## 
   source("server-inputdata.R",local = TRUE)
   source("server-plot.R",local = TRUE)
-  source("server-about.R",local = TRUE)
-  #source("server-xxxx.R",local = TRUE)
+  source("server-correlations.R",local = TRUE)
   #source("server-xxxx.R",local = TRUE)
   #source("server-xxxx.R",local = TRUE)
   
