@@ -35,7 +35,10 @@ Correlations <-
                                    theme(legend.position="none") + 
                                    theme_minimal())
     
-    return(list(correlation_plot = correlation_plot))
+    text_cor <- round(cor(TOTAL$`Variate 1`, TOTAL$`Variate 2`),3)
+    
+    return(list(correlation_plot = correlation_plot, text_cor = text_cor, One = One,
+                Two = Two))
 
   })
 
@@ -49,7 +52,7 @@ output$cor_plot <- renderPlotly({
 output$text <- renderText({
   
   paste0("The correlation between ", Correlations()$One, " and " , Correlations()$Two, " is ",
-         cor(Correlations()$TOTAL[,1],Correlations()$TOTAL[,2]))
+         Correlations()$text_cor)
 
 })
 

@@ -16,6 +16,7 @@ fluidRow(column(width = 3,
          fluidPage(tabsetPanel(
          
          tabPanel("Correlation", plotlyOutput("cor_plot"),
+                  br(),
                   textOutput("text"))
          )))
   )
