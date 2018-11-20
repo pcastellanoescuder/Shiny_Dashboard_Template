@@ -47,7 +47,12 @@ dashboardPage(skin = "blue",
     #########################################
     ## FOOTER
     #########################################  
-    tags$footer(p(h5(("Pol Castellano Escuder"), align="center",width=3)))
+    tags$footer(p(h5(("Pol Castellano Escuder"), align="center",width=3)),
+                p(("Copyright (C) 2018, code licensed under GPLv3"),align="center",width=4),
+                p(("Code available on Github:"),
+                  a("https://github.com/pcastellanoescuder/Shiny_Dashboard_Template",
+                    href="https://github.com/pcastellanoescuder/Shiny_Dashboard_Template"),
+                  align="center",width=4))
   ) 
 ) 
 
