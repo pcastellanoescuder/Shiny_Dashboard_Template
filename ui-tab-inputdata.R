@@ -16,9 +16,8 @@ tabPanel("Input Data",
 
          column(10,
                 
-                fluidPage(tabsetPanel(
-                  tabPanel("Uploaded Data", div(style = 'overflow-x: scroll', DT::dataTableOutput("mydata"), width = NULL,
+                fluidPage(div(style = 'overflow-x: scroll', DT::dataTableOutput("mydata"), width = NULL,
                     status = "primary")))
 
-                           ))))
+                           ))
 

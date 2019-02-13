@@ -14,5 +14,10 @@ datasetInput <- reactive({
 
 #################
                   
-output$mydata <- DT::renderDataTable(datasetInput())
+output$mydata <- renderDataTable({
+
+results <- datasetInput()
+datatable(results, rownames=FALSE, class = 'cell-border stripe')
+           
+})
 
